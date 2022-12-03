@@ -1,0 +1,6 @@
+назва бд: site
+
+провірить на правильність бд:
+    https://www.eversql.com/sql-syntax-check-validator/
+зробить для бд рандомні значення
+    https://www.mockaroo.com/
