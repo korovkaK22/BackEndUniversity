@@ -6,6 +6,51 @@ CREATE TABLE faq(
    answer VARCHAR(255) NOT NULL
 );
 
+
+CREATE TABLE faculties(
+  id SERIAL PRIMARY KEY NOT NULL,
+  name VARCHAR(32) NOT NULL,
+  short_name VARCHAR(32) NOT NULL
+);
+
+CREATE TABLE departments(
+    id SERIAL PRIMARY KEY NOT NULL,
+    faculty_id INTEGER NOT NULL,
+    name VARCHAR(32) NOT NULL,
+    short_name VARCHAR(32) NOT NULL,
+    FOREIGN KEY (faculty_id) REFERENCES faculties (id)
+);
+
+CREATE TABLE groups(
+   id SERIAL PRIMARY KEY NOT NULL,
+   department_id INTEGER NOT NULL,
+   name VARCHAR(32) NOT NULL,
+   course INTEGER NOT NULL,
+   FOREIGN KEY (department_id) REFERENCES departments (id)
+);
+
+CREATE TABLE teachers(
+     id SERIAL PRIMARY KEY NOT NULL,
+     name VARCHAR(32) NOT NULL,
+     surname VARCHAR(32) NOT NULL,
+     email VARCHAR(32),
+     phone VARCHAR(32) NOT NULL
+);
+
+CREATE TABLE students(
+     id SERIAL PRIMARY KEY NOT NULL,
+     group_id INTEGER NOT NULL,
+     name VARCHAR(32) NOT NULL,
+     email VARCHAR(32),
+     phone VARCHAR(32) NOT NULL,
+     FOREIGN KEY (group_id) REFERENCES groups (id)
+);
+
+CREATE TABLE disciplines(
+    id SERIAL PRIMARY KEY NOT NULL,
+    name VARCHAR(64) NOT NULL
+);
+
 CREATE TABLE schedules(
     id SERIAL PRIMARY KEY NOT NULL,
     teacher_id INTEGER NOT NULL,
@@ -18,48 +63,10 @@ CREATE TABLE schedules(
     FOREIGN KEY (group_id) REFERENCES groups (id)
 );
 
-CREATE TABLE disciplines(
-    id SERIAL PRIMARY KEY NOT NULL,
-    name VARCHAR(64) NOT NULL
-);
 
-CREATE TABLE groups(
-     id SERIAL PRIMARY KEY NOT NULL,
-     department_id INTEGER NOT NULL,
-     name VARCHAR(32) NOT NULL,
-     course INTEGER NOT NULL,
-     FOREIGN KEY (department_id) REFERENCES departments (id)
-);
 
-CREATE TABLE students(
-     id SERIAL PRIMARY KEY NOT NULL,
-     group_id INTEGER NOT NULL,
-     name VARCHAR(32) NOT NULL,
-     email VARCHAR(32),
-     phone VARCHAR(32) NOT NULL,
-     FOREIGN KEY (group_id) REFERENCES groups (id)
-);
 
-CREATE TABLE departments(
-     id SERIAL PRIMARY KEY NOT NULL,
-     faculty_id INTEGER NOT NULL,
-     name VARCHAR(32) NOT NULL,
-     short_name VARCHAR(32) NOT NULL,
-     FOREIGN KEY (faculty_id) REFERENCES faculties (id)
-);
 
-CREATE TABLE faculties(
-    id SERIAL PRIMARY KEY NOT NULL,
-    name VARCHAR(32) NOT NULL,
-    short_name VARCHAR(32) NOT NULL
-);
 
-CREATE TABLE teachers(
-   id SERIAL PRIMARY KEY NOT NULL,
-   name VARCHAR(32) NOT NULL,
-   surname VARCHAR(32) NOT NULL,
-   email VARCHAR(32),
-   phone VARCHAR(32) NOT NULL
-);
 
 

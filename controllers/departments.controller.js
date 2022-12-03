@@ -1,10 +1,10 @@
 const db = require('../DataBaseJoin')
 
-class rtmentsController{
+class DepartmentsController{
 
     async createDepartments(req, res){
-        const{id,facultyId,name,shortName} = req.body;
-        const newResult = await db.query('INSERT INTO departments (id,facultyId,name,shortName) values ($1, $2) RETURNING *',[id,facultyId,name,shortName]);
+        const{facultyId, name, shortName} = req.body;
+        const newResult = await db.query('INSERT INTO departments (faculty_id,name,short_name) values ($1, $2, $3) RETURNING *',[facultyId,name,shortName]);
         res.json(newResult.rows[0]);
     }
 
@@ -28,4 +28,5 @@ class rtmentsController{
     }
 }
 
-module.exports = new rtmentsController();
+module.exports = new DepartmentsController();
+
