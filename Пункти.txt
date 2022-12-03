@@ -1,0 +1,10 @@
+спочатку в корні
+    npm init -y
+Потім докачуємо плагіни і моди на майнкрафт
+    npm install pg nodemon express
+потім в package.json добавляєм dev запуск
+    "dev": "nodemon server.js"
+потім створюєм server.js
+    routes
+    bd.js
+    controllers
