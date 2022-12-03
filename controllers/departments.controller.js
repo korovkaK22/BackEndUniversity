@@ -8,6 +8,13 @@ class DepartmentsController{
         res.json(newResult.rows[0]);
     }
 
+    async editDepartments(req, res){
+        const{id,facultyId, name, shortName} = req.body;
+        const newFaq = await db.query('UPDATE departments SET faculty_id=$2, name=$3, short_name=$4  WHERE id=$1 RETURNING *',[id,facultyId, name, shortName]);
+        res.json(newFaq.rows[0]);
+    }
+
+
 
 
     async getAllDepartments(req, res){

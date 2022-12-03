@@ -12,11 +12,13 @@ app.listen(PORT, () => console.log(`server started on port ${PORT}`));
 const faqRouter = require('./routes/faq.routes')
 const facultiesRouter = require('./routes/faculties.routes')
 const departmentsRouter = require('./routes/departments.routes')
+const teachersRouter = require('./routes/teachers.routes')
 
 // app.use('/api', userRouter);
 app.use('/faq', faqRouter);
 app.use('/faculties', facultiesRouter);
 app.use('/departments', departmentsRouter);
+app.use('/teachers', teachersRouter);
 
 
 

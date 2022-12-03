@@ -25,6 +25,12 @@ class FaqController{
         const faq = await db.query('DELETE FROM faq WHERE id = $1', [id])
         res.json(faq.rows[0]);
     }
+
+    async editFaq(req, res){
+        const{id,question,answer} = req.body;
+        const newFaq = await db.query('UPDATE faq SET question=$2, answer=$3  WHERE id=$1 RETURNING *',[id,question,answer]);
+        res.json(newFaq.rows[0]);
+    }
 }
 
 module.exports = new FaqController();

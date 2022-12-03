@@ -25,6 +25,13 @@ class FacultiesController{
         const faculties = await db.query('DELETE FROM faculties WHERE id = $1', [id])
         res.json(faculties.rows[0]);
     }
+
+    async editFaculties(req, res){
+        const{id,name,shortName} = req.body;
+        const newFac = await db.query('UPDATE faculties SET name=$2, short_name=$3  WHERE id=$1 RETURNING *',[id,name,shortName]);
+        res.json(newFac.rows[0]);
+    }
+
 }
 
 module.exports = new FacultiesController();

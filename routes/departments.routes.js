@@ -6,5 +6,6 @@ router.get('/viewAll', departments.getAllDepartments);
 router.get('/view/:id', departments.getOneDepartments);
 router.post('/create', departments.createDepartments);
 router.delete('/delete', departments.deleteDepartments);
+router.post('/edit', departments.editDepartments);
 
 module.exports = router

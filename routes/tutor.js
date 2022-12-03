@@ -6,5 +6,6 @@ router.get('/viewAll', faqController.getAllFaq);
 router.get('/view/:id', faqController.getOneFaq);
 router.post('/create', faqController.createFaq);
 router.delete('/delete', faqController.deleteFaq);
+router.post('/create', faqController.editFaq);
 
 module.exports = router

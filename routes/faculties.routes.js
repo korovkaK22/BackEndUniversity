@@ -6,5 +6,6 @@ router.get('/viewAll', facultiesController.getAllFaculties);
 router.get('/view/:id', facultiesController.getOneFaculties);
 router.post('/create', facultiesController.createFaculties);
 router.delete('/delete', facultiesController.deleteFaculties);
+router.post('/edit', facultiesController.editFaculties);
 
 module.exports = router
