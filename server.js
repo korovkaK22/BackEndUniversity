@@ -15,6 +15,7 @@ const departmentsRouter = require('./routes/departments.routes')
 const teachersRouter = require('./routes/teachers.routes')
 const  disciplinesRouter = require('./routes/disciplines.routes')
 const  groupsRouter = require('./routes/groups.routes')
+const  studentsRouter = require('./routes/students.routes')
 
 // app.use('/api', userRouter);
 app.use('/faq', faqRouter);
@@ -23,6 +24,7 @@ app.use('/departments', departmentsRouter);
 app.use('/teachers', teachersRouter);
 app.use('/disciplines', disciplinesRouter);
 app.use('/groups', groupsRouter);
+app.use('/students', studentsRouter);
 
 
 
