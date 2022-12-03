@@ -3,13 +3,13 @@ const db = require('../DataBaseJoin')
 class GroupsController{
 
     async createGroups(req, res){
-        const{departamentId, name, course} = req.body;
-        const newResult = await db.query('INSERT INTO groups (departament_id,name,course) values ($1, $2, $3) RETURNING *',[departamentId, name, course]);
+        const{departmentId, name, course} = req.body;
+        const newResult = await db.query('INSERT INTO groups (department_id,name,course) values ($1, $2, $3) RETURNING *',[departmentId, name, course]);
         res.json(newResult.rows[0]);
     }
     async editGroups(req, res){
-        const{id,departamentId, name, course} = req.body;
-        const newFaq = await db.query('UPDATE groups SET departament_id=$2, name=$3, course=$4  WHERE id=$1 RETURNING *',[id,departamentId, name, course]);
+        const{id,departmentId, name, course} = req.body;
+        const newFaq = await db.query('UPDATE groups SET department_id=$2, name=$3, course=$4  WHERE id=$1 RETURNING *',[id,departmentId, name, course]);
         res.json(newFaq.rows[0]);
     }
 
