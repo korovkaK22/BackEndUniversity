@@ -26,7 +26,7 @@ class SchedulesController{
 
     async getAllSchedules(req, res){
         try {
-        const result = await db.query('SELECT * FROM schedules ')
+        const result = await db.query('SELECT * FROM schedules ORDER BY id ')
         res.json(result.rows)
         }catch (error) {
             console.error(error.message);

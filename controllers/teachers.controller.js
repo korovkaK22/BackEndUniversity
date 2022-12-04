@@ -25,7 +25,7 @@ class TeachersController{
 
     async getAllTeachers(req, res){
         try {
-        const result = await db.query('SELECT * FROM teachers ')
+        const result = await db.query('SELECT * FROM teachers ORDER BY id ')
         res.json(result.rows)
         }catch (error) {
             console.error(error.message);

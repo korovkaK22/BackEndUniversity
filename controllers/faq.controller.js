@@ -5,7 +5,7 @@ class FaqController{
 
     async getAllFaq(req, res){
         try {
-        const faq = await db.query('SELECT * FROM faq ')
+        const faq = await db.query('SELECT * FROM faq ORDER BY id')
         res.json(faq.rows)
         }catch (error) {
             console.error(error.message);

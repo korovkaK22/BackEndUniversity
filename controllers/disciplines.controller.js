@@ -26,7 +26,7 @@ class DisciplinesController{
 
     async getAllDisciplines(req, res){
         try {
-        const result = await db.query('SELECT * FROM disciplines ')
+        const result = await db.query('SELECT * FROM disciplines ORDER BY id')
         res.json(result.rows)
         }catch (error) {
             console.error(error.message);

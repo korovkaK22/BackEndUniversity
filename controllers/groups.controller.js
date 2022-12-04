@@ -26,7 +26,7 @@ class GroupsController{
 
     async getAllGroups(req, res){
         try {
-        const result = await db.query('SELECT * FROM groups ')
+        const result = await db.query('SELECT * FROM groups ORDER BY id')
         res.json(result.rows)
         }catch (error) {
             console.error(error.message);
