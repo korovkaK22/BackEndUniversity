@@ -39,7 +39,7 @@ class FacultiesController{
         res.json(faculties.rows[0]);
         }catch (error) {
             console.error(error.message);
-            res.json();}
+            res.json(error.message);}
     }
 
     async editFaculties(req, res){
