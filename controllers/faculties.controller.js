@@ -5,7 +5,7 @@ class FacultiesController{
 
     async getAllFaculties(req, res){
         try {
-        const faculties = await db.query('SELECT * FROM faculties ')
+        const faculties = await db.query('SELECT * FROM faculties ORDER BY id')
         res.json(faculties.rows)
         }catch (error) {
             console.error(error.message);
