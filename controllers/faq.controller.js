@@ -39,7 +39,7 @@ class FaqController{
         res.json(faq.rows[0]);
         }catch (error) {
             console.error(error.message);
-            res.json();}
+            res.json(error.message);}
     }
 
     async editFaq(req, res){

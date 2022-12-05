@@ -51,7 +51,7 @@ class DepartmentsController{
         res.json(result.rows[0]);
         }catch (error) {
             console.error(error.message);
-            res.json();}
+            res.json(error.message);}
     }
 }
 
