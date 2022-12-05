@@ -5,11 +5,11 @@ class DepartmentsController{
     async createDepartments(req, res){
         try {
         const{facultyId, name, shortName} = req.body;
-        const newResult = await db.query('INSERT INTO departments (faculty_id,name,short_name) values ($1, $2, $3) RETURNING *',[facultyId,name,shortName]);
-        res.json(newResult.rows[0]);
+        await db.query('INSERT INTO departments (faculty_id,name,short_name) values ($1, $2, $3) RETURNING *',[facultyId,name,shortName]);
+            res.json();
         }catch (error) {
             console.error(error.message);
-            res.json();}
+            res.json(error.message);}
     }
 
     async editDepartments(req, res){

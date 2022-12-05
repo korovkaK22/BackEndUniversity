@@ -25,11 +25,11 @@ class FacultiesController{
     async createFaculties(req, res){
         try {
         const{name,shortName} = req.body;
-        const newFaculties = await db.query('INSERT INTO faculties (name,short_name) values ($1, $2) RETURNING *',[name,shortName]);
-        res.json(newFaculties.rows[0]);
+        await db.query('INSERT INTO faculties (name,short_name) values ($1, $2) RETURNING *',[name,shortName]);
+            res.json();
         }catch (error) {
             console.error(error.message);
-            res.json();}
+            res.json(error.message);}
     }
 
     async deleteFaculties(req, res){

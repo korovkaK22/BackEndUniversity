@@ -5,11 +5,11 @@ class GroupsController{
     async createGroups(req, res){
         try {
         const{departmentId, name, course} = req.body;
-        const newResult = await db.query('INSERT INTO groups (department_id,name,course) values ($1, $2, $3) RETURNING *',[departmentId, name, course]);
-        res.json(newResult.rows[0]);
+        await db.query('INSERT INTO groups (department_id,name,course) values ($1, $2, $3) RETURNING *',[departmentId, name, course]);
+            res.json();
         }catch (error) {
             console.error(error.message);
-            res.json();}
+            res.json(error.message);}
     }
     async editGroups(req, res){
         try {

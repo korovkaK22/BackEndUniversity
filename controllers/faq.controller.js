@@ -25,11 +25,11 @@ class FaqController{
     async createFaq(req, res){
         try {
         const{question,answer} = req.body;
-        const newFaq = await db.query('INSERT INTO faq (question,answer) values ($1, $2) RETURNING *',[question,answer]);
-        res.json(newFaq.rows[0]);
+        await db.query('INSERT INTO faq (question,answer) values ($1, $2) RETURNING *',[question,answer]);
+            res.json();
         }catch (error) {
             console.error(error.message);
-            res.json();}
+            res.json(error.message);}
     }
 
     async deleteFaq(req, res){

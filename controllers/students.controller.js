@@ -5,11 +5,11 @@ class StudentsController{
     async createStudents(req, res){
         try {
         const{groupId, name, email,phone} = req.body;
-        const newResult = await db.query('INSERT INTO students (group_id,name,email,phone) values ($1, $2, $3, $4) RETURNING *',[groupId, name, email,phone]);
-        res.json(newResult.rows[0]);
+        await db.query('INSERT INTO students (group_id,name,email,phone) values ($1, $2, $3, $4) RETURNING *',[groupId, name, email,phone]);
+            res.json();
         }catch (error) {
             console.error(error.message);
-            res.json();}
+            res.json(error.message);}
     }
     async editStudents(req, res){
         try {

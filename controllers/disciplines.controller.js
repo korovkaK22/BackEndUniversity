@@ -5,12 +5,13 @@ class DisciplinesController{
     async createDisciplines(req, res){
         try {
         const{name} = req.body;
-        const newResult = await db.query('INSERT INTO disciplines (name) values ($1) RETURNING *',[name]);
-        res.json(newResult.rows[0]);
+        await db.query('INSERT INTO disciplines (name) values ($1) RETURNING *',[name]);
+            res.json();
         }catch (error) {
             console.error(error.message);
-            res.json();}
+            res.json(error.message);}
     }
+
     async editDisciplines(req, res){
         try {
         const{id, name} = req.body;

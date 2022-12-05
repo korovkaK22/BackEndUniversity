@@ -5,11 +5,11 @@ class SchedulesController{
     async createSchedules(req, res){
         try {
         const{teacherId, disciplineId, groupId, time, classroom} = req.body;
-        const newResult = await db.query('INSERT INTO schedules (teacher_id, discipline_id, group_id, time, classroom) values ($1, $2, $3, $4, $5) RETURNING *',[teacherId, disciplineId, groupId, time, classroom]);
-        res.json(newResult.rows[0]);
+        await db.query('INSERT INTO schedules (teacher_id, discipline_id, group_id, time, classroom) values ($1, $2, $3, $4, $5) RETURNING *',[teacherId, disciplineId, groupId, time, classroom]);
+            res.json();
         }catch (error) {
             console.error(error.message);
-            res.json();}
+            res.json(error.message);}
     }
 
     async editSchedules(req, res){
