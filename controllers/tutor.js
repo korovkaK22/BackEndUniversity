@@ -14,11 +14,11 @@ class DepartmentsController{
     async editDepartments(req, res){
         try {
         const{id,facultyId, name, shortName} = req.body;
-        const newFaq = await db.query('UPDATE departments SET faculty_id=$2, name=$3, short_name=$4  WHERE id=$1 RETURNING *',[id,facultyId, name, shortName]);
-        res.json(newFaq.rows[0]);
+        await db.query('UPDATE departments SET faculty_id=$2, name=$3, short_name=$4  WHERE id=$1 RETURNING *',[id,facultyId, name, shortName]);
+        res.json();
         }catch (error) {
             console.error(error.message);
-            res.json();}
+            res.json(error.message);}
     }
 
 

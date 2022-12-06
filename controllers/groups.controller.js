@@ -14,11 +14,11 @@ class GroupsController{
     async editGroups(req, res){
         try {
         const{id,departmentId, name, course} = req.body;
-        const newFaq = await db.query('UPDATE groups SET department_id=$2, name=$3, course=$4  WHERE id=$1 RETURNING *',[id,departmentId, name, course]);
-        res.json(newFaq.rows[0]);
+        await db.query('UPDATE groups SET department_id=$2, name=$3, course=$4  WHERE id=$1 RETURNING *',[id,departmentId, name, course]);
+        res.json();
         }catch (error) {
             console.error(error.message);
-            res.json();}
+            res.json(error.message);}
     }
 
 

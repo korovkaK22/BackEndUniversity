@@ -45,11 +45,11 @@ class FacultiesController{
     async editFaculties(req, res){
         try {
         const{id,name,shortName} = req.body;
-        const newFac = await db.query('UPDATE faculties SET name=$2, short_name=$3  WHERE id=$1 RETURNING *',[id,name,shortName]);
-        res.json(newFac.rows[0]);
+        await db.query('UPDATE faculties SET name=$2, short_name=$3  WHERE id=$1 RETURNING *',[id,name,shortName]);
+        res.json();
         }catch (error) {
             console.error(error.message);
-            res.json();}
+            res.json(error.message);}
     }
 
 }

@@ -45,11 +45,11 @@ class FaqController{
     async editFaq(req, res){
         try {
         const{id,question,answer} = req.body;
-        const newFaq = await db.query('UPDATE faq SET question=$2, answer=$3  WHERE id=$1 RETURNING *',[id,question,answer]);
-        res.json(newFaq.rows[0]);
+        await db.query('UPDATE faq SET question=$2, answer=$3  WHERE id=$1 RETURNING *',[id,question,answer]);
+        res.json();
         }catch (error) {
             console.error(error.message);
-            res.json();}
+            res.json(error.message);}
     }
 }
 

@@ -15,11 +15,11 @@ class SchedulesController{
     async editSchedules(req, res){
         try {
         const{id, teacherId, disciplineId, groupId, time, classroom} = req.body;
-        const newFaq = await db.query('UPDATE schedules SET teacher_id=$2, discipline_id=$3, group_id=$4 , time=$5 , classroom=$6 WHERE id=$1 RETURNING *',[id, teacherId, disciplineId, groupId, time, classroom]);
-        res.json(newFaq.rows[0]);
+        await db.query('UPDATE schedules SET teacher_id=$2, discipline_id=$3, group_id=$4 , time=$5 , classroom=$6 WHERE id=$1 RETURNING *',[id, teacherId, disciplineId, groupId, time, classroom]);
+        res.json();
         }catch (error) {
             console.error(error.message);
-            res.json();}
+            res.json(error.message);}
     }
 
 

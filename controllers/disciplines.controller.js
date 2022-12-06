@@ -15,11 +15,11 @@ class DisciplinesController{
     async editDisciplines(req, res){
         try {
         const{id, name} = req.body;
-        const newFaq = await db.query('UPDATE disciplines SET name=$2  WHERE id=$1 RETURNING *',[id, name]);
-        res.json(newFaq.rows[0]);
+        await db.query('UPDATE disciplines SET name=$2  WHERE id=$1 RETURNING *',[id, name]);
+        res.json();
         }catch (error) {
             console.error(error.message);
-            res.json();}
+            res.json(error.message);}
     }
 
 
